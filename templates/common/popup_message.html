@@ -1,0 +1,18 @@
+{% macro popup(msg, type) %}
+{% if msg: %}
+{% if type == 'success': %}
+    <div class="modal-content modal-content-success">
+        <p>{{msg}}</p>
+    </div>
+{% elif type == 'error': %}
+    <div class="modal-content modal-content-error">
+        <p>{{msg}}</p>
+    </div>
+{% else: %}
+    <div class="modal-content">
+        <p>{{msg}}</p>
+    </div>
+{% endif %}
+
+{% endif %}
+{% endmacro %}

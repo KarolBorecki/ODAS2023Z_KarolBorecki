@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Register</title>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/auth.css') }}">
+
+  <script src="{{url_for('static', filename='scripts/password_check.js')}}" type="module"></script>
+  <script src="{{url_for('static', filename='scripts/register_password_check.js')}}" type="module"></script>
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+
+  <div class="form">
+    <div class="form-container">
+      <div class="form-content">
+        <h2 class="caption">Register</h2>
+        <form action={{ url_for('auth.register') }} method="post" class="form-form">
+
+          {% from "common/form_field.html" import form_field %}
+          {{ form_field(form.username) }}
+          {{ form_field(form.email) }}
+          {{ form_field(form.password1) }}
+          {{ form_field(form.password2) }}
+          {{ form_field(form.documentNumber) }}
+
+          <div class="password-strength-indicator">
+            <label>Password strength:</label>
+            <progress id="passwordSrengthStatusBar" value="0" max="100"></progress>
+          </div>
+
+          <div class="links">
+            <a href="{{url_for('index')}}" class="link">Go back</a>
+            <a href="{{url_for('auth.login')}}" class="link-accent">Login</a>
+          </div>
+
+          <div class="input-box">
+            <input type="submit" value="Register">
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

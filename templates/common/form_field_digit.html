@@ -1,0 +1,10 @@
+{% macro digit(field, fill) %}
+{% if fill %}
+<div class="input-box input-box-digit">
+    {{ field(**kwargs)|safe }}
+</div>
+{% else %}
+<div class="input-box-filled input-box-digit">
+</div>
+{% endif %}
+{% endmacro %}

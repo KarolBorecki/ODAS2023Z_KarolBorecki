@@ -1,0 +1,15 @@
+{% macro transaction(data) %}
+<div class="transactions-list-item">
+    <h2 class="transaction-caption">{{ data['title'] }}</h2>
+    <span class="transaction-date">{{ data['date_created']}}</span>
+    <div {% if data['type']=='income' %} class="income" {% else %} class="expense" {%endif%}>
+        <span class="transaction-amount">{{ data['value'] }} PLN</span>
+        {% if data['type']=='income' %}
+        <span style="transform: rotate(-180deg); display: inline-block;">&#x2794;</span>
+        {% else %}
+        <span>&#x2794;</span>
+        {% endif %}
+        <span class="transaction-from">{{ data['other_client_nr'] }}</span>
+    </div>
+</div>
+{% endmacro %}

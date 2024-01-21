@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FAULTY DATA</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/error_handling.css') }}">
+</head>
+
+<body>
+    {% from "common/popup_message.html" import popup %}
+    {{ popup(msg, msg_type) }}
+
+    <div class="error-container">
+        <h2 class="error-caption">FAULTY DATA</h2>
+        <h3 class="error-description">PLEAS TRY AGAIN</h3>
+        <div class="links"> <a href="{{url_for('index')}}">Go back</a></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Login</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/auth.css') }}">
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+
+  <div class="form">
+    <div class="form-container">
+      <div class="form-content">
+        <h2 class="caption">Login</h2>
+        <form action={{ url_for('auth.login') }} method="post" class="form-form">
+          {% from "common/form_field.html" import form_field %}
+          {{ form_field(form.username) }}
+          {{ form_field(form.password) }}
+          <a href="{{url_for('auth.restore_password')}}" class="link-accent link-small password-restore">Forgot password?</a>
+
+          <h3 class="under-caption-small">Enter digits from document number:</h3>
+          {% from "common/form_field_digit.html" import digit %}
+          <div class="form-digit-group">
+            {{ digit(form.digit_0, fill[0]) }}
+            {{ digit(form.digit_1, fill[1]) }}
+            {{ digit(form.digit_2, fill[2]) }}
+            {{ digit(form.digit_3, fill[3]) }}
+            {{ digit(form.digit_4, fill[4]) }}
+            {{ digit(form.digit_5, fill[5]) }}
+            {{ digit(form.digit_6, fill[6]) }}
+            {{ digit(form.digit_7, fill[7]) }}
+          </div>
+
+
+          <div class="links">
+            <a href="{{url_for('index')}}" class="link">Go back</a>
+            <a href="{{url_for('auth.register')}}" class="link-accent">Register</a>
+          </div>
+
+          <div class="input-box">
+            <input type="submit" value="Login">
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Hello</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+  <div class="form">
+    <div class="form-container">
+      <div class="form-content-big form-content">
+        <div class="form-content-small form-content">
+          <h2 class="caption">Welcome!</h2>
+          <p class="under-caption">It's nice to see you in our safe system!</p>
+        </div>
+        <a class="button" href="{{url_for('auth.login')}}">Login</a>
+        <a class="button" href="{{url_for('auth.register')}}">Register</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

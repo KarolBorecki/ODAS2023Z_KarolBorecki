@@ -1,0 +1,25 @@
+.transactions-list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 15px 35px var(--main-color);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.transaction-caption {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.transaction-amount {}
+
+.income * {
+    color: var(--ok-color);
+}
+
+.expense * {
+    color: var(--error-color);
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>ODAS 2023Z</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+  <div class="container">
+    <div class="main-container" style="max-width: 500px;">
+      <h2 class="caption" style="margin-bottom: 20px;">Hello, {{user.username}}! </h2>
+      <hr class="divider">
+      <div class="menu">
+        <div class="menu-option"><a class="menu-link" href="{{url_for('account.account_info')}}">Account</a></div>
+        <div class="menu-option"><a class="menu-link"
+            href="{{url_for('transactions.transactions_list')}}">Transactions</a></div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

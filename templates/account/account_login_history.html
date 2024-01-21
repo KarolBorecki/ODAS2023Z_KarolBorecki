@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Account history</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/account.css') }}">
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+
+  <div class="container">
+    <div class="main-container">
+      <div class="caption">
+        History:
+        <span class="right"><a class="link" href="{{url_for('account.account_info')}}">Go back</a><span>
+      </div>
+
+      <div class="table" class="caption">
+        <span>IP</span>
+        <span>Date</span>
+        <span>Success?</span>
+      </div>
+      {% for logging in logging_list: %}
+
+      <div class="table">
+        {% for item, value in logging.items(): %}
+        {% if item == 'sucess': %}
+        <span class="icon">
+          {% if value == 1: %}
+          <span class="icon-ok">&#x2611;</span>
+          {% else: %}
+          <span class="icon-error">&#x2612;</span>
+          {% endif %}
+        </span>
+        {% else: %}
+        <span class="account-info-list-text">{{ value }}</span>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Transactions</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/transaction.css') }}">
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+
+  <div class="container">
+    <div class="main-container main-container-wider">
+      <div class="caption">Transactions:
+        <div class="right">
+          <a class="button" href="{{url_for('transactions.transactions_new')}}">+New</a>
+          <a class="link" href="{{url_for('main')}}">Go back</a>
+        </div>
+      </div>
+
+      <hr class="divider divider-gap" />
+
+      <div class="transactions-list">
+        {% from "common/transaction.html" import transaction %}
+        {% for data in transactions %}
+        {{ transaction(data) }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

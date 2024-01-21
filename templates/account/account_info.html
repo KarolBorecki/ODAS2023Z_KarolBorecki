@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Account</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/account.css') }}">
+</head>
+
+<body>
+  {% from "common/popup_message.html" import popup %}
+  {{ popup(msg, msg_type) }}
+
+  <div class="container">
+    <div class="main-container">
+      <h2 class="caption">Hello, {{ user.username }}!</h2>
+      <hr class="divider divider-gap">
+
+      <h2 class="small-caption">Your info:</h2>
+      <div class="account-info-container">
+        <div class="account-info-list-item">
+          <span class="account-info-list-caption">Unique id: </span>
+          <span class="account-info-list-text">{{ user.user_id }}</span>
+        </div>
+        <div class="account-info-list-item">
+          <span class="account-info-list-caption">Username: </span>
+          <span class="account-info-list-text">{{ user.username }}</span>
+        </div>
+        <div class="account-info-list-item">
+          <span class="account-info-list-caption">E-mail: </span>
+          <span class="account-info-list-text">{{ user.email }}</span>
+        </div>
+        <div class="account-info-list-item">
+          <span class="account-info-list-caption">Client nr: </span>
+          <span class="account-info-list-text">{{ user.client_nr }}</span>
+        </div>
+        <div class="account-info-list-item">
+          <span class="account-info-list-caption">Document nr: </span>
+          <span class="account-info-list-text">{{ user.document_number }}</span>
+          {% if not user.is_document_number_visible %}
+          <a class="link link-accent link-small" href="{{url_for('account.full_number_request')}}">See full</a>
+          {% endif %}
+        </div>
+        <hr class="divider divider-gap">
+        <h2 class="small-caption">Actions:</h2>
+        <div class="menu">
+          <div class="menu-option"><a class="menu-link" href="{{url_for('account.account_edit')}}">Edit account</a>
+          </div>
+          <div class="menu-option"><a class="menu-link" href="{{url_for('account.account_history')}}">See logging
+              history</a></div>
+          <div class="menu-option"><a class="menu-link" href="{{url_for('auth.logout')}}">Logout</a></div>
+        </div>
+
+        <div class="right">
+          <a class="button" href="{{url_for('main')}}">Go back</a>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>
