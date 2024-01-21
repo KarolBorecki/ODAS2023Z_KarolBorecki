@@ -69,7 +69,7 @@ def login():
                 "auth/login.html",
                 form=form,
                 fill=fill,
-                msg="Too many failed logins, try again in 1 hour",
+                msg="Too many failed logins, try again in 5 minutes",
                 msg_type="error",
             )
         if logged:

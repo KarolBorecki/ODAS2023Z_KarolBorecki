@@ -12,4 +12,6 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
+RUN touch ./db/database.db
+
 CMD ["python3", "app_runner.py"]
