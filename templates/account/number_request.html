@@ -17,6 +17,7 @@
       <div class="form-content">
         <h2 class="caption">Request the document:</h2>
         <form action={{ url_for('account.account_info') }} method="post" class="form-form">
+          <input type="hidden" name="csrf-token" value="{{csrf}}" />
 
           {% from "common/form_field.html" import form_field %}
           {{ form_field(form.password) }}

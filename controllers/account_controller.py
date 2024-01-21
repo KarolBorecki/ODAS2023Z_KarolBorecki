@@ -108,6 +108,13 @@ def account_edit(current_user):
 def full_number_request(current_user):
     form = NumberRequestForm(request.form)
     if request.method == "GET":
-        return render_template("account/number_request.html", form=form)
+        csrf = HashService().generate_csrf_token()
+        UserService().set_csrf(current_user.user_id, csrf)
+        return render_template("account/number_request.html", form=form, csrf=csrf)
+    elif request.method == "POST":
+        got_csrf = request.form['csrf-token']
+        if got_csrf != UserService().get_csrf(current_user.user_id):
+            return unauthorized(None)
+        return render_template("account/number_request.html", form=form, csrf=got_csrf)
     else:
-        return render_template("account/number_request.html", form=form)
+        return unauthorized(None)
